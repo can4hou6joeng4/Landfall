@@ -1,0 +1,310 @@
+{
+  "skill_name": "landfall",
+  "evals": [
+    {
+      "id": 0,
+      "name": "luma-ai-diary",
+      "prompt": "帮我做个落地页，我的产品叫 Luma，是个 AI 日记 app。风格我想要首尔那种感觉，干净但有表达力。需要 Hero、功能介绍、用户评价、下载 CTA 这几个板块。排版气质选叙事型。Nav 选底���磁性胶囊。",
+      "expected_output": "Multi-file landing page: index.html + style.css + main.js + assets/icons.svg. Seoul city style applied. Bottom pill nav with magnetic effect. GSAP ScrollTrigger animations. No white backgrounds. No rectangular section dividers.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "multifile-output",
+          "description": "输出包含 index.html、style.css、main.js、assets/icons.svg 四个文件"
+        },
+        {
+          "id": "gsap-loaded",
+          "description": "index.html 中包含 GSAP CDN script 标签"
+        },
+        {
+          "id": "scrolltrigger-used",
+          "description": "main.js 中使用了 ScrollTrigger"
+        },
+        {
+          "id": "no-white-bg",
+          "description": "style.css 中没有 background: #ffffff 或 background: white"
+        },
+        {
+          "id": "no-rectangular-dividers",
+          "description": "style.css 中至少一处使用了 clip-path 或 border-radius 在 section 上"
+        },
+        {
+          "id": "pill-nav-present",
+          "description": "包含 pill-nav 或 bottom pill 样式的导航，position: fixed，bottom 定位"
+        },
+        {
+          "id": "svg-sprite",
+          "description": "assets/icons.svg 存在且包含 <symbol> 元素"
+        },
+        {
+          "id": "css-variables",
+          "description": "style.css 使用 CSS 自定义属性（:root { --xxx }）定义设计系统"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "terroir-coffee",
+      "prompt": "帮我做一个咖啡品牌的官网首页，品牌叫 Terroir，主打单一产区精品豆。风格想要巴黎那种有年代感但不老气的感觉。需要 Hero、品牌故事、产品系列、门店地址这几个板块。排版气质选铺张型（大字铺屏，视觉冲击）。Nav 选侧边垂直型。",
+      "expected_output": "Multi-file landing page with Paris city style. Vertical side rail nav. Bold oversized typography. Serif display font. Warm ecru/cream color palette. Clip-path section dividers. GSAP animations.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "multifile-output",
+          "description": "输出包含 index.html、style.css、main.js、assets/icons.svg 四个文件"
+        },
+        {
+          "id": "serif-font",
+          "description": "style.css 或 index.html 中引用了衬线字体（Playfair、Cormorant、或其他 serif）"
+        },
+        {
+          "id": "vertical-side-nav",
+          "description": "包含侧边垂直导航（writing-mode: vertical 或 position:fixed + left 定位）"
+        },
+        {
+          "id": "warm-palette",
+          "description": "CSS 变量中包含暖色系值（#f2ece0、#f5ede0 或类似的米白/奶油色）"
+        },
+        {
+          "id": "large-headline",
+          "description": "style.css 中 h1 或 display 字号使用了 clamp() 且最大值 ≥ 5rem"
+        },
+        {
+          "id": "gsap-loaded",
+          "description": "index.html 中包含 GSAP CDN script 标签"
+        },
+        {
+          "id": "svg-sprite",
+          "description": "assets/icons.svg 存在且包含 <symbol> 元素"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "forge-devtool",
+      "prompt": "Build me a landing page for a developer tool called Forge — it's a local-first database for teams. I want Tokyo Night style: dark, electric, precise. Sections: Hero, 3 key Features, How it works (step-through), Pricing tiers, CTA. Layout: theatrical (sticky scroll scenes). Nav: full-screen blast menu.",
+      "expected_output": "Multi-file landing page with Tokyo Night style. Dark background (#08060f or similar). Neon accent colors. Full-screen overlay menu with GSAP animation. Sticky scroll step-through section. Monospace or geometric sans font. Grid texture background.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "multifile-output",
+          "description": "Output contains index.html, style.css, main.js, assets/icons.svg"
+        },
+        {
+          "id": "dark-background",
+          "description": "CSS has a dark background color (#08 or #0a or #0b range in the first 2 hex chars)"
+        },
+        {
+          "id": "fullscreen-nav",
+          "description": "main.js or index.html contains a full-screen overlay nav with open/close animation"
+        },
+        {
+          "id": "sticky-scroll-section",
+          "description": "main.js contains a sticky scroll / step-through section using ScrollTrigger"
+        },
+        {
+          "id": "gsap-scrolltrigger",
+          "description": "GSAP and ScrollTrigger CDN scripts are loaded in index.html"
+        },
+        {
+          "id": "grid-texture",
+          "description": "style.css contains a grid or scanline background texture"
+        },
+        {
+          "id": "neon-glow",
+          "description": "style.css contains box-shadow with rgba color for a glow effect"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "zen-wellness-dark-tone",
+      "prompt": "帮我做一个冥想 App 的落地页，产品叫 ZenFlow。风格选京都。色调选暗黑版。需要 Hero、功能介绍、定价、FAQ、CTA。Nav 选拆分居中型。",
+      "expected_output": "Multi-file landing page with Kyoto style in dark tone variant. Split centered nav. Dark background derived from Kyoto palette. Pricing section with toggle. FAQ accordion. Serif display font.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "multifile-output",
+          "description": "输出包含 index.html、style.css、main.js、assets/icons.svg 四个文件"
+        },
+        {
+          "id": "dark-tone-applied",
+          "description": "style.css :root 中 --bg 使用深色值（#0 或 #1 开头的 hex），不是京都默认的暖白色"
+        },
+        {
+          "id": "split-nav",
+          "description": "index.html 包含 split-nav 或居中 logo + 两侧链接的导航结构"
+        },
+        {
+          "id": "pricing-section",
+          "description": "index.html 包含定价板块，有至少 2 个价格卡片"
+        },
+        {
+          "id": "faq-accordion",
+          "description": "index.html 包含 FAQ 板块，有 aria-expanded 或 data-open 手风琴交互"
+        },
+        {
+          "id": "cta-section",
+          "description": "index.html 包含独立的 CTA 板块（不是 hero 内的按钮）"
+        },
+        {
+          "id": "gsap-loaded",
+          "description": "index.html 中包含 GSAP CDN script 标签"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "aurora-saas-en",
+      "prompt": "Build a landing page for Aurora, a SaaS analytics platform. Style: let the AI choose the best city. Sections: Hero (product demo type), Features (bento grid), Testimonials, Pricing with monthly/annual toggle, FAQ, CTA. Nav: bottom magnetic pill.",
+      "expected_output": "Multi-file landing page. AI selects a city style autonomously and explains the choice. Product demo hero with step-through. Bento grid features. Pricing with billing toggle. English copy throughout.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "multifile-output",
+          "description": "Output contains index.html, style.css, main.js, assets/icons.svg"
+        },
+        {
+          "id": "ai-chose-city",
+          "description": "Agent explicitly states which city it chose and why (not __AI_CHOOSE__ left as placeholder)"
+        },
+        {
+          "id": "demo-hero",
+          "description": "index.html contains a product demo / step-through hero section with multiple steps"
+        },
+        {
+          "id": "bento-grid",
+          "description": "style.css contains grid-template with span or grid-column: span for bento layout"
+        },
+        {
+          "id": "billing-toggle",
+          "description": "index.html contains monthly/annual toggle with data-monthly and data-annual attributes"
+        },
+        {
+          "id": "english-copy",
+          "description": "index.html body text is primarily in English (not placeholder lorem ipsum)"
+        },
+        {
+          "id": "two-typefaces",
+          "description": "style.css defines at least two distinct font-family values (--font-display and --font-body)"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "monet-non-city-description",
+      "prompt": "帮我做一个艺术画廊的落地页，品牌叫 Lumière Gallery。不要选城市，我想要的感觉是：莫奈睡莲 + 清晨薄雾 + 亚麻布质感。需要 Hero、展览介绍、艺术家评价、联系方式。Nav 选全屏爆开式。",
+      "expected_output": "Multi-file landing page. Non-city description processed through imagery-derivation.md to derive a custom design token system. Monet-inspired soft palette. Full-screen blast menu nav. Linen texture background.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "multifile-output",
+          "description": "输出包含 index.html、style.css、main.js、assets/icons.svg 四个文件"
+        },
+        {
+          "id": "custom-palette",
+          "description": "style.css 中的颜色不是任何已有城市的默认配色（非直接复制 city-styles.md 的某个城市）"
+        },
+        {
+          "id": "soft-muted-colors",
+          "description": "style.css --accent 值是柔和色调（非高饱和霓虹色），符合莫奈/薄雾意境"
+        },
+        {
+          "id": "blast-menu",
+          "description": "main.js 包含全屏菜单动画（clipPath inset 或类似的 overlay 展开）"
+        },
+        {
+          "id": "texture-present",
+          "description": "style.css 包含 background-image 纹理（feTurbulence、repeating-linear-gradient 或类似）"
+        },
+        {
+          "id": "gsap-loaded",
+          "description": "index.html 中包含 GSAP CDN script 标签"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "multipage-portfolio",
+      "prompt": "帮我做一个作品集网站，品牌叫 PixelFrame，是个摄影师个人站。风格选里斯本。需要首页 Hero + 作品集画廊 + 关于我 + 联系方式。要求生成多页面站点，包含 about.html 和 contact.html。Nav 选磁性胶囊。",
+      "expected_output": "Multi-page site with Lisbon style. index.html + about.html + contact.html generated. Gallery section on index. Magnetic pill nav shared across pages.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "multipage-output",
+          "description": "输出包含 index.html、about.html、contact.html 三个 HTML 文件"
+        },
+        {
+          "id": "shared-nav",
+          "description": "about.html 和 contact.html 包含与 index.html 相同结构的导航栏"
+        },
+        {
+          "id": "gallery-section",
+          "description": "index.html 包含画廊或作品集板块（gallery/portfolio class 或 grid 布局）"
+        },
+        {
+          "id": "consistent-design-tokens",
+          "description": "所有页面共享相同的 CSS 变量（--bg、--accent 等值一致）"
+        },
+        {
+          "id": "gsap-loaded",
+          "description": "index.html 中包含 GSAP CDN script 标签"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "dark-mode-toggle-ja",
+      "prompt": "ランディングページを作って。製品は NightOwl という睡眠トラッカーアプリ。東京ナイトスタイルで。ダークモード切替を含めて。セクション：Hero、機能紹介、料金、CTA。ナビは全画面展開式。",
+      "expected_output": "Landing page with Tokyo Night style. Dark mode toggle included. Full-screen blast nav. Japanese product copy. Pricing section.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "multifile-output",
+          "description": "Output contains index.html, style.css, main.js, assets/icons.svg"
+        },
+        {
+          "id": "dark-mode-toggle",
+          "description": "main.js or index.html contains dark mode toggle logic (data-theme switching)"
+        },
+        {
+          "id": "dark-background-default",
+          "description": "style.css :root uses dark background color (Tokyo Night starts dark)"
+        },
+        {
+          "id": "fullscreen-nav",
+          "description": "Full-screen overlay nav with open/close animation"
+        },
+        {
+          "id": "pricing-section",
+          "description": "index.html contains pricing section with at least 2 tiers"
+        },
+        {
+          "id": "japanese-trigger",
+          "description": "Agent correctly activated from Japanese trigger phrase"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "minimal-input-resilience",
+      "prompt": "landing page for Acme",
+      "expected_output": "Agent asks clarifying questions about the product or proceeds with reasonable defaults. Should not crash or produce empty output from minimal input.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "no-crash",
+          "description": "Agent responds coherently without errors or empty output"
+        },
+        {
+          "id": "asks-or-generates",
+          "description": "Agent either asks follow-up questions about Acme or generates a page with sensible defaults"
+        },
+        {
+          "id": "city-selection-offered",
+          "description": "Agent offers city style selection or auto-selects with explanation"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landfall — Demo</title>
+  <meta name="description" content="57 city-inspired design systems for stunning landing pages. A Claude Code skill demo.">
+  <meta property="og:title" content="Landfall Demo">
+  <meta property="og:description" content="57 city-inspired design systems for stunning landing pages.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <style>
+    :root {
+      --bg: #f7f0e6; --bg-surface: #ede4d6; --ink: #2a1f14; --ink-muted: #7a6655;
+      --accent: #8b4513; --accent-soft: rgba(139,69,19,0.08); --accent-hover: #6d3610;
+      --line: rgba(42,31,20,0.1);
+      --font-display: 'Cormorant Garamond', serif; --font-body: 'Jost', sans-serif;
+    }
+    [data-theme="dark"] {
+      --bg: #0e0c09; --bg-surface: #1e1b16; --ink: #f2ede4; --ink-muted: #a89880;
+      --accent: #c4753a; --accent-soft: rgba(196,117,58,0.1); --line: rgba(242,237,228,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); }
+    a { color: var(--accent); text-decoration: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 5vw; position: relative; z-index: 1; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
+
+    .theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 100; width: 44px; height: 44px; border-radius: 50%; background: var(--bg-surface); border: 1px solid var(--line); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
+    .theme-toggle svg { width: 20px; height: 20px; stroke: var(--ink); fill: none; stroke-width: 2; }
+    .theme-toggle .icon-moon { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+
+    .hero { min-height: 100vh; min-height: 100dvh; display: flex; align-items: center; padding: 4rem 0; position: relative; }
+    .hero-inner { max-width: 720px; }
+    .hero-eyebrow { font-variant: small-caps; font-size: 0.9rem; color: var(--accent); letter-spacing: 0.08em; font-weight: 500; margin-bottom: 1.5rem; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.08; font-weight: 400; margin-bottom: 1.5rem; }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero p { font-size: clamp(1rem, 1.3vw, 1.15rem); color: var(--ink-muted); line-height: 1.7; max-width: 540px; margin-bottom: 2rem; }
+    .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: var(--accent); color: var(--bg); border: none; border-radius: 100px; font-family: var(--font-body); font-weight: 600; font-size: 1rem; cursor: pointer; min-height: 48px; transition: background 0.3s, transform 0.2s; text-decoration: none; }
+    .hero-cta:hover { background: var(--accent-hover); color: var(--bg); }
+    .hero-cta:active { transform: scale(0.97); }
+    .hero-badge { padding: 0.6rem 1.2rem; border: 1px solid var(--line); border-radius: 100px; font-size: 0.85rem; color: var(--ink-muted); }
+
+    .section-divider { position: relative; z-index: 2; }
+    .clip-diagonal { clip-path: polygon(0 0, 100% 4vw, 100% 100%, 0 calc(100% - 4vw)); margin-top: -4vw; padding-top: calc(4rem + 4vw); padding-bottom: calc(4rem + 4vw); }
+    .clip-arc { clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%); padding-bottom: calc(4rem + 10vw); }
+
+    .stats { padding: 4rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+    @media (max-width: 640px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    .stat-item { }
+    .stat-num { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); color: var(--ink); line-height: 1; }
+    .stat-num span { color: var(--accent); }
+    .stat-label { font-size: 0.85rem; color: var(--ink-muted); margin-top: 0.4rem; }
+
+    .cities { padding: 5rem 0; overflow: hidden; }
+    .cities h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; text-align: center; margin-bottom: 0.75rem; }
+    .cities h2 em { font-style: italic; color: var(--accent); }
+    .cities > .container > p { text-align: center; color: var(--ink-muted); margin-bottom: 3rem; font-size: 1.05rem; }
+    .city-track { display: flex; gap: 1.5rem; width: max-content; animation: cityScroll 40s linear infinite; }
+    @media (prefers-reduced-motion: reduce) { .city-track { animation: none; flex-wrap: wrap; width: 100%; justify-content: center; } }
+    @keyframes cityScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .city-card { flex-shrink: 0; width: 200px; padding: 1.5rem; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-surface); text-align: center; transition: border-color 0.3s, transform 0.3s; }
+    .city-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .city-swatch { width: 100%; height: 60px; border-radius: 8px; margin-bottom: 0.75rem; display: flex; gap: 4px; overflow: hidden; }
+    .city-swatch span { flex: 1; }
+    .city-name { font-family: var(--font-display); font-size: 1rem; }
+    .city-sub { font-size: 0.75rem; color: var(--ink-muted); }
+
+    .features { padding: 6rem 0; background: var(--bg-surface); }
+    .section-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; text-align: center; margin-bottom: 3rem; }
+    .section-title em { font-style: italic; color: var(--accent); }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    @media (max-width: 768px) { .features-grid { grid-template-columns: 1fr; } }
+    .feature-card { padding: 2rem; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); transition: border-color 0.3s, transform 0.3s; }
+    .feature-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .feature-card:first-child { border-color: var(--accent); }
+    .feature-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--accent-soft); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .feature-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 2; }
+    .feature-card h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; margin-bottom: 0.5rem; }
+    .feature-card p { font-size: 0.9rem; color: var(--ink-muted); line-height: 1.5; }
+
+    .cta { padding: 6rem 0; text-align: center; position: relative; overflow: hidden; }
+    .cta-glow { position: absolute; top: 50%; left: 50%; width: 60vw; height: 60vw; background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%); transform: translate(-50%, -50%); pointer-events: none; z-index: 0; }
+    .cta h2 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 400; margin-bottom: 1rem; position: relative; z-index: 1; }
+    .cta h2 em { color: var(--accent); font-style: italic; }
+    .cta p { color: var(--ink-muted); margin-bottom: 2rem; font-size: 1.05rem; position: relative; z-index: 1; }
+    .cta code { display: inline-block; background: var(--bg-surface); padding: 0.8rem 1.5rem; border-radius: 8px; font-size: 0.95rem; border: 1px solid var(--line); color: var(--ink); position: relative; z-index: 1; }
+
+    .footer { padding: 2rem 0; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--ink-muted); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer a { color: var(--ink-muted); transition: color 0.3s; }
+    .footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <a href="#features" class="skip-link" style="position:absolute;top:-100px;left:1rem;background:var(--accent);color:var(--bg);padding:0.75rem 1.5rem;border-radius:0 0 8px 8px;z-index:200;font-weight:600;text-decoration:none;transition:top 0.2s" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">Skip to content</a>
+
+  <button class="theme-toggle" aria-label="Toggle dark mode">
+    <svg class="icon-sun" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    <svg class="icon-moon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-eyebrow js-hero">Landfall &mdash; Skill Demo</div>
+        <h1 class="js-hero">57 city aesthetics.<br><em>One command.</em></h1>
+        <p class="js-hero">This page was generated by Landfall — a Claude Code skill that turns a product description into a visually striking, multi-section landing page with GSAP animations and real design depth.</p>
+        <div class="hero-actions js-hero">
+          <a href="https://github.com/can4hou6joeng4/Landfall" class="hero-cta">View on GitHub</a>
+          <span class="hero-badge">v1.7.0</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-num js-count" data-target="57">0</div><div class="stat-label">City styles</div></div>
+        <div class="stat-item"><div class="stat-num js-count" data-target="40">0</div><div class="stat-label">Section variants</div></div>
+        <div class="stat-item"><div class="stat-num">8<span></span></div><div class="stat-label">Releases</div></div>
+        <div class="stat-item"><div class="stat-num">3<span></span></div><div class="stat-label">Deploy platforms</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cities section-divider clip-diagonal" style="background:var(--bg-surface)">
+    <div class="container">
+      <h2>57 cities, 57 <em>personalities</em></h2>
+      <p>Each city defines a complete design system — fonts, colors, textures, motion, and icons.</p>
+    </div>
+    <div class="city-track">
+      <div class="city-card"><div class="city-swatch"><span style="background:#f7f0e6"></span><span style="background:#8b4513"></span><span style="background:#2a1f14"></span></div><div class="city-name">Kyoto</div><div class="city-sub">Wabi-sabi warmth</div></div>
+      <div class="city-card"><div class="city-swatch"><span style="background:#f2ece0"></span><span style="background:#1a1612"></span><span style="background:#c8a96e"></span></div><div class="city-name">Paris</div><div class="city-sub">Linen elegance</div></div>
+      <div class="city-card"><div class="city-swatch"><span style="background:#08060f"></span><span style="background:#7b5ef8"></span><span style="background:#f0ecff"></span></div><div class="city-name">Tokyo Night</div><div class="city-sub">Neon precision</div></div>
+      <div class="city-card"><div class="city-swatch"><span style="background:#fafafa"></span><span style="background:#111111"></span><span style="background:#ff3b30"></span></div><div class="city-name">New York</div><div class="city-sub">Bold editorial</div></div>
+      <div class="city-card"><div class="city-swatch"><span style="background:#f5f5f7"></span><span style="background:#3d5cff"></span><span style="background:#ff6b35"></span></div><div class="city-name">Seoul</div><div class="city-sub">K-pop gradient</div></div>
+      <div class="city-card"><div class="city-swatch"><span style="background:#F5EBE1"></span><span style="background:#008B8B"></span><span style="background:#3A2E2A"></span></div><div class="city-name">Beirut</div><div class="city-sub">Mediterranean warmth</div></div>
+      <div class="city-card"><div class="city-swatch"><span style="background:#252D27"></span><span style="background:#D9534F"></span><span style="background:#E8E2D2"></span></div><div class="city-name">Portland</div><div class="city-sub">Craft industrial</div></div>
+      <div class="city-card"><div class="city-swatch"><span style="background:#1a1a2e"></span><span style="background:#e94560"></span><span style="background:#eaeaea"></span></div><div class="city-name">Istanbul</div><div class="city-sub">Ottoman dusk</div></div>
+      <div class="city-card"><div class="city-swatch"><span style="background:#f7f0e6"></span><span style="background:#8b4513"></span><span style="background:#2a1f14"></span></div><div class="city-name">Kyoto</div><div class="city-sub">Wabi-sabi warmth</div></div>
+      <div class="city-card"><div class="city-swatch"><span style="background:#f2ece0"></span><span style="background:#1a1612"></span><span style="background:#c8a96e"></span></div><div class="city-name">Paris</div><div class="city-sub">Linen elegance</div></div>
+      <div class="city-card"><div class="city-swatch"><span style="background:#08060f"></span><span style="background:#7b5ef8"></span><span style="background:#f0ecff"></span></div><div class="city-name">Tokyo Night</div><div class="city-sub">Neon precision</div></div>
+      <div class="city-card"><div class="city-swatch"><span style="background:#fafafa"></span><span style="background:#111111"></span><span style="background:#ff3b30"></span></div><div class="city-name">New York</div><div class="city-sub">Bold editorial</div></div>
+      <div class="city-card"><div class="city-swatch"><span style="background:#f5f5f7"></span><span style="background:#3d5cff"></span><span style="background:#ff6b35"></span></div><div class="city-name">Seoul</div><div class="city-sub">K-pop gradient</div></div>
+      <div class="city-card"><div class="city-swatch"><span style="background:#F5EBE1"></span><span style="background:#008B8B"></span><span style="background:#3A2E2A"></span></div><div class="city-name">Beirut</div><div class="city-sub">Mediterranean warmth</div></div>
+      <div class="city-card"><div class="city-swatch"><span style="background:#252D27"></span><span style="background:#D9534F"></span><span style="background:#E8E2D2"></span></div><div class="city-name">Portland</div><div class="city-sub">Craft industrial</div></div>
+      <div class="city-card"><div class="city-swatch"><span style="background:#1a1a2e"></span><span style="background:#e94560"></span><span style="background:#eaeaea"></span></div><div class="city-name">Istanbul</div><div class="city-sub">Ottoman dusk</div></div>
+    </div>
+  </section>
+
+  <section class="features section-divider" id="features">
+    <div class="container">
+      <h2 class="section-title">What it <em>does</em></h2>
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg></div><h3>Interactive Style Picker</h3><p>Browse 57 city-inspired styles in a live browser preview. Click to select.</p></div>
+        <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>40+ Section Variants</h3><p>Hero, features, pricing, testimonials, FAQ, forms, team, gallery, timeline.</p></div>
+        <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div><h3>Multi-Page Sites</h3><p>Generate About, Contact, and Blog sub-pages sharing the same design system.</p></div>
+        <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3>One-Click Deploy</h3><p>Deploy to Netlify, Vercel, or GitHub Pages directly from the generation flow.</p></div>
+        <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg></div><h3>Dark Mode Toggle</h3><p>Runtime light/dark switch with localStorage persistence. Try it on this page.</p></div>
+        <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3>Accessibility Built-in</h3><p>Reduced motion, focus-visible, skip links, semantic HTML, WCAG contrast.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta section-divider clip-arc" style="background:var(--bg)">
+    <div class="cta-glow"></div>
+    <div class="container">
+      <h2>Try it <em>now</em></h2>
+      <p>Install the skill and say "帮我做一个落地页" to get started.</p>
+      <code>npx skills add can4hou6joeng4/Landfall -a claude-code -g -y</code>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span style="font-family:var(--font-display);font-size:1.1rem;color:var(--ink)">Landfall</span>
+        <span>&copy; 2026 can4hou6joeng4 &middot; <a href="https://github.com/can4hou6joeng4/Landfall">GitHub</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Dark mode
+    const toggle = document.querySelector('.theme-toggle');
+    const root = document.documentElement;
+    const stored = localStorage.getItem('theme');
+    root.setAttribute('data-theme', stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+    toggle.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof gsap === 'undefined') return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Hero entrance — no pre-hidden CSS, GSAP handles everything
+      if (!prefersReducedMotion) {
+        gsap.from('.js-hero', { y: 32, autoAlpha: 0, filter: 'blur(6px)', duration: 0.9, ease: 'power3.out', stagger: 0.15, clearProps: 'filter' });
+      }
+
+      // Stats reveal
+      document.querySelectorAll('.stat-item').forEach((item, i) => {
+        if (!prefersReducedMotion) {
+          gsap.from(item, { y: 30, autoAlpha: 0, duration: 0.6, delay: i * 0.1, ease: 'power3.out',
+            scrollTrigger: { trigger: item, start: 'top 92%', toggleActions: 'play none none none' }
+          });
+        }
+      });
+
+      document.querySelectorAll('.js-count').forEach(el => {
+        const target = parseInt(el.dataset.target);
+        if (prefersReducedMotion) { el.textContent = target; return; }
+        const obj = { val: 0 };
+        gsap.to(obj, { val: target, duration: 1.5, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' },
+          onUpdate: () => { el.textContent = Math.round(obj.val); }
+        });
+      });
+
+      // Feature cards — use autoAlpha, wider trigger range
+      document.querySelectorAll('.feature-card').forEach((card, i) => {
+        if (!prefersReducedMotion) {
+          gsap.from(card, { y: 40, autoAlpha: 0, duration: 0.7, delay: i * 0.08, ease: 'power3.out',
+            scrollTrigger: { trigger: card, start: 'top 95%', toggleActions: 'play none none none' }
+          });
+        }
+      });
+
+      document.fonts.ready.then(() => ScrollTrigger.refresh());
+    });
+  </script>
+</body>
+</html>

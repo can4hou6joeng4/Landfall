@@ -1,0 +1,343 @@
+<!-- @@VARIANT:NEWSLETTER -->
+<style>
+.form-newsletter {
+  padding: 5rem 5vw;
+  background: var(--bg-surface);
+  font-family: var(--font-body);
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.fn-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.fn-inner h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+.fn-inner h2 span { color: var(--accent); font-style: italic; }
+.fn-inner p {
+  color: var(--ink-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+.fn-form {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+@media (max-width: 520px) {
+  .fn-form { flex-direction: column; }
+}
+.fn-form input[type="email"] {
+  flex: 1;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  min-height: 48px;
+}
+.fn-form input[type="email"]:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.fn-form button {
+  padding: 0.9rem 2rem;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  min-height: 48px;
+  white-space: nowrap;
+  transition: background 0.3s, transform 0.2s;
+}
+.fn-form button:hover { background: var(--accent-hover, var(--accent)); }
+.fn-form button:active { transform: scale(0.97); }
+.fn-note {
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  margin-top: 1rem;
+}
+.fn-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+</style>
+<section class="form-newsletter">
+  <div class="fn-glow"></div>
+  <div class="fn-inner">
+    <h2>Stay in the <span>loop</span></h2>
+    <p>Replace with your newsletter value proposition. What will subscribers get? How often?</p>
+    <form class="fn-form" action="#" method="POST">
+      <label for="fn-email" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Email address</label>
+      <input type="email" id="fn-email" name="email" required placeholder="your@email.com" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="fn-note">No spam. Unsubscribe anytime.</p>
+  </div>
+</section>
+<!-- @@/VARIANT:NEWSLETTER -->
+
+<!-- @@VARIANT:WAITLIST -->
+<style>
+.form-waitlist {
+  padding: 6rem 5vw;
+  background: var(--bg);
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+.fw-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .fw-inner { grid-template-columns: 1fr; gap: 2rem; }
+}
+.fw-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.fw-text h2 span { color: var(--accent); }
+.fw-text p {
+  color: var(--ink-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  max-width: 480px;
+}
+.fw-stats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 0;
+}
+.fw-stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--ink);
+  display: block;
+}
+.fw-stat-label {
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+}
+.fw-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 2.5rem;
+}
+.fw-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+.fw-card .fw-group { margin-bottom: 1.25rem; }
+.fw-card label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+.fw-card input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  min-height: 48px;
+  transition: border-color 0.3s;
+}
+.fw-card input:focus { outline: none; border-color: var(--accent); }
+.fw-card button {
+  width: 100%;
+  padding: 1rem;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  min-height: 48px;
+  transition: background 0.3s, transform 0.2s;
+}
+.fw-card button:hover { background: var(--accent-hover, var(--accent)); }
+.fw-card button:active { transform: scale(0.97); }
+</style>
+<section class="form-waitlist">
+  <div class="fw-inner">
+    <div class="fw-text">
+      <h2>Join the <span>waitlist</span></h2>
+      <p>Replace with why people should join early. What exclusive access or benefit do they get?</p>
+      <div class="fw-stats">
+        <div>
+          <span class="fw-stat-num">2,400+</span>
+          <span class="fw-stat-label">Already signed up</span>
+        </div>
+        <div>
+          <span class="fw-stat-num">Q2 2026</span>
+          <span class="fw-stat-label">Expected launch</span>
+        </div>
+      </div>
+    </div>
+    <form class="fw-card" action="#" method="POST">
+      <h3>Get early access</h3>
+      <div class="fw-group">
+        <label for="fw-name">Name</label>
+        <input type="text" id="fw-name" name="name" required placeholder="Your name" autocomplete="name">
+      </div>
+      <div class="fw-group">
+        <label for="fw-email">Email</label>
+        <input type="email" id="fw-email" name="email" required placeholder="you@example.com" autocomplete="email">
+      </div>
+      <button type="submit">Join the waitlist</button>
+    </form>
+  </div>
+</section>
+<!-- @@/VARIANT:WAITLIST -->
+
+<!-- @@VARIANT:CONTACT_INLINE -->
+<style>
+.form-contact-inline {
+  padding: 5rem 5vw;
+  background: var(--bg-surface);
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+.fci-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.fci-inner h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+.fci-inner > p {
+  text-align: center;
+  color: var(--ink-muted);
+  margin-bottom: 2.5rem;
+  font-size: 1.05rem;
+}
+.fci-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+@media (max-width: 520px) {
+  .fci-form { grid-template-columns: 1fr; }
+}
+.fci-form .fci-full { grid-column: 1 / -1; }
+.fci-form label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+.fci-form input,
+.fci-form textarea,
+.fci-form select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  min-height: 48px;
+  transition: border-color 0.3s;
+}
+.fci-form input:focus,
+.fci-form textarea:focus,
+.fci-form select:focus { outline: none; border-color: var(--accent); }
+.fci-form textarea { min-height: 120px; resize: vertical; }
+.fci-form button {
+  padding: 1rem 2.5rem;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  min-height: 48px;
+  transition: background 0.3s, transform 0.2s;
+}
+.fci-form button:hover { background: var(--accent-hover, var(--accent)); }
+.fci-form button:active { transform: scale(0.97); }
+</style>
+<section class="form-contact-inline">
+  <div class="fci-inner">
+    <h2>Send us a message</h2>
+    <p>Replace with what the user can expect after submitting. Response time? Next steps?</p>
+    <form class="fci-form" action="#" method="POST">
+      <div>
+        <label for="fci-first">First name</label>
+        <input type="text" id="fci-first" name="first_name" required placeholder="Jane" autocomplete="given-name">
+      </div>
+      <div>
+        <label for="fci-last">Last name</label>
+        <input type="text" id="fci-last" name="last_name" required placeholder="Doe" autocomplete="family-name">
+      </div>
+      <div class="fci-full">
+        <label for="fci-email">Email</label>
+        <input type="email" id="fci-email" name="email" required placeholder="jane@example.com" autocomplete="email">
+      </div>
+      <div class="fci-full">
+        <label for="fci-subject">Subject</label>
+        <select id="fci-subject" name="subject">
+          <option value="">Choose a topic...</option>
+          <option value="general">General inquiry</option>
+          <option value="support">Support</option>
+          <option value="partnership">Partnership</option>
+        </select>
+      </div>
+      <div class="fci-full">
+        <label for="fci-message">Message</label>
+        <textarea id="fci-message" name="message" required placeholder="Tell us more..."></textarea>
+      </div>
+      <div class="fci-full">
+        <button type="submit">Send message</button>
+      </div>
+    </form>
+  </div>
+</section>
+<!-- @@/VARIANT:CONTACT_INLINE -->

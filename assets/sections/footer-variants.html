@@ -1,0 +1,253 @@
+<!-- @@VARIANT:A -->
+<style>
+.footer-a {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--line);
+  padding: 3rem 5vw;
+  font-family: var(--font-body);
+  color: var(--ink-muted);
+}
+.footer-a .fa-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-a .fa-brand {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer-a .fa-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.footer-a .fa-links a {
+  color: var(--ink-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.3s;
+}
+.footer-a .fa-links a:hover { color: var(--accent); }
+.footer-a .fa-copy {
+  font-size: 0.8rem;
+  width: 100%;
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+</style>
+<footer class="footer-a">
+  <div class="fa-inner">
+    <a href="#" class="fa-brand">__BRAND__</a>
+    <ul class="fa-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#">Privacy</a></li>
+    </ul>
+    <p class="fa-copy">&copy; 2026 __BRAND__. All rights reserved.</p>
+  </div>
+</footer>
+<!-- @@/VARIANT:A -->
+
+<!-- @@VARIANT:B -->
+<style>
+.footer-b {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--line);
+  padding: 4rem 5vw 2rem;
+  font-family: var(--font-body);
+  color: var(--ink-muted);
+}
+.footer-b .fb-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+}
+@media (max-width: 768px) {
+  .footer-b .fb-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+.footer-b .fb-brand-col .fb-brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 1rem;
+}
+.footer-b .fb-brand-col p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 280px;
+}
+.footer-b .fb-col h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.footer-b .fb-col ul { list-style: none; }
+.footer-b .fb-col li { margin-bottom: 0.6rem; }
+.footer-b .fb-col a {
+  color: var(--ink-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.3s;
+}
+.footer-b .fb-col a:hover { color: var(--accent); }
+.footer-b .fb-bottom {
+  max-width: 1400px;
+  margin: 3rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.8rem;
+}
+</style>
+<footer class="footer-b">
+  <div class="fb-grid">
+    <div class="fb-brand-col">
+      <span class="fb-brand">__BRAND__</span>
+      <p>Replace with a one-line brand description that captures your product's value.</p>
+    </div>
+    <div class="fb-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#">Changelog</a></li>
+      </ul>
+    </div>
+    <div class="fb-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="fb-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fb-bottom">
+    <span>&copy; 2026 __BRAND__. All rights reserved.</span>
+    <a href="#" style="color: var(--ink-muted); text-decoration: none;">Back to top &uarr;</a>
+  </div>
+</footer>
+<!-- @@/VARIANT:B -->
+
+<!-- @@VARIANT:C -->
+<style>
+.footer-c {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--line);
+  padding: 5rem 5vw 2rem;
+  font-family: var(--font-body);
+  color: var(--ink-muted);
+  position: relative;
+}
+.footer-c .fc-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+}
+@media (max-width: 768px) {
+  .footer-c .fc-inner { grid-template-columns: 1fr; gap: 2rem; }
+}
+.footer-c .fc-big-text {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--ink);
+  line-height: 1.15;
+  font-weight: 400;
+}
+.footer-c .fc-big-text span { color: var(--accent); font-style: italic; }
+.footer-c .fc-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.footer-c .fc-links {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  list-style: none;
+}
+.footer-c .fc-links a {
+  color: var(--ink-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color 0.3s, border-color 0.3s;
+}
+.footer-c .fc-links a:hover { color: var(--accent); border-color: var(--accent); }
+.footer-c .fc-bottom {
+  max-width: 1400px;
+  margin: 4rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.footer-c .fc-watermark {
+  position: absolute;
+  bottom: 1rem;
+  right: 5vw;
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 15vw, 14rem);
+  color: var(--ink);
+  opacity: 0.03;
+  pointer-events: none;
+  line-height: 1;
+}
+</style>
+<footer class="footer-c">
+  <div class="fc-inner">
+    <div>
+      <h2 class="fc-big-text">Ready to<br><span>get started?</span></h2>
+    </div>
+    <div class="fc-right">
+      <ul class="fc-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+      </ul>
+      <p style="font-size: 0.9rem; line-height: 1.5;">Replace with brand tagline or contact email.</p>
+    </div>
+  </div>
+  <div class="fc-bottom">
+    <span>&copy; 2026 __BRAND__. All rights reserved.</span>
+    <span>Crafted with intention.</span>
+  </div>
+  <div class="fc-watermark">__BRAND__</div>
+</footer>
+<!-- @@/VARIANT:C -->
