@@ -4,7 +4,6 @@
 
 **描述你的产品，选择一座城市的美学，生成一个惊艳的落地页。**
 
-[![CI](https://github.com/can4hou6joeng4/Landfall/actions/workflows/ci.yml/badge.svg)](https://github.com/can4hou6joeng4/Landfall/actions/workflows/ci.yml)
 [![GitHub release](https://img.shields.io/github/v/release/can4hou6joeng4/Landfall)](https://github.com/can4hou6joeng4/Landfall/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/can4hou6joeng4/Landfall?style=social)](https://github.com/can4hou6joeng4/Landfall)

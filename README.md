@@ -4,7 +4,6 @@
 
 **Turn any product idea into a stunning landing page — powered by 57 city-inspired design systems.**
 
-[![CI](https://github.com/can4hou6joeng4/Landfall/actions/workflows/ci.yml/badge.svg)](https://github.com/can4hou6joeng4/Landfall/actions/workflows/ci.yml)
 [![GitHub release](https://img.shields.io/github/v/release/can4hou6joeng4/Landfall)](https://github.com/can4hou6joeng4/Landfall/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/can4hou6joeng4/Landfall?style=social)](https://github.com/can4hou6joeng4/Landfall)
