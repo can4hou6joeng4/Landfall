@@ -1,0 +1,18 @@
+# 按改动路径给 PR 打标签（actions/labeler）。标签需事先存在于仓库。
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.md"
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/**"
+city-styles:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "references/**"
+templates:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "assets/**"
+          - "demo/**"
